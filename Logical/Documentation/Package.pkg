@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File" Description="the ascii codes">1280px-ASCII-Table-wide.svg.png</Object>
+    <Object Type="File" Description="usb hid translation table from microsoft">USB_HID_Table.pdf</Object>
+    <Object Type="File" Description="some decodings">Samples.xlsx</Object>
+    <Object Type="Package" Description="manual for the voyager bar code reader">Voyager_1200g_1202g</Object>
+    <Object Type="Package" Description="manuals for the datalogic 6500bt">Datalogic</Object>
+  </Objects>
+</Package>

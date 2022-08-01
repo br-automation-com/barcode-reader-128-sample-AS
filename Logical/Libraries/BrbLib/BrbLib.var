@@ -1,0 +1,58 @@
+(********************************************************************
+ * COPYRIGHT -- Bernecker + Rainer
+ ********************************************************************
+ * Library: BrbLib
+ * File: BrbLib.var
+ * Author: niedermeierr
+ * Created: June 11, 2013
+ ********************************************************************
+ * Constants of library BrbLib
+ ********************************************************************)
+(*General*)
+VAR CONSTANT
+	sBRB_STX : ARRAY[0..1] OF USINT := [2,0]; (*Start of Text*)
+	sBRB_ETX : ARRAY[0..1] OF USINT := [3,0]; (*End of Text*)
+	sBRB_TAB : ARRAY[0..1] OF USINT := [9,0]; (*Tabulator*)
+	sBRB_LF : ARRAY[0..1] OF USINT := [10,0]; (*LineFeed = Vorschub*)
+	sBRB_LFCR : ARRAY[0..2] OF USINT := [10,13,0]; (*LineFeed + CarriageReturn*)
+	sBRB_CR : ARRAY[0..1] OF USINT := [13,0]; (*CarriageReturn = Wagenrücklauf*)
+	sBRB_CRLF : ARRAY[0..2] OF USINT := [13,10,0]; (*CarriageReturn + LineFeed*)
+	sBRB_QM : ARRAY[0..1] OF USINT := [34,0]; (*QuotationMark = Anführungszeichen*)
+	sBRB_WC_TAB : ARRAY[0..1] OF UINT := [9,0]; (*Tabulator*)
+	sBRB_WC_LF : ARRAY[0..1] OF UINT := [10,0]; (*LineFeed = Vorschub*)
+	sBRB_WC_LFCR : ARRAY[0..2] OF UINT := [10,13,0]; (*LineFeed + CarriageReturn*)
+	sBRB_WC_CR : ARRAY[0..1] OF UINT := [13,0]; (*CarriageReturn = Wagenrücklauf*)
+	sBRB_WC_CRLF : ARRAY[0..2] OF UINT := [13,10,0]; (*CarriageReturn + LineFeed*)
+	sBRB_WC_QM : ARRAY[0..1] OF UINT := [34,0]; (*QuotationMark = Anführungszeichen*)
+	nBRB_IP_ADR_CHAR_MAX : UINT := 16; (*Anzahl der Zeichen einer IP-Adresse*)
+	nBRB_URL_CHAR_MAX : UINT := 300; (*Zeichenanzahl einer URL*)
+END_VAR
+(*StepHandling*)
+VAR CONSTANT
+	nBRB_STEP_TEXT_CHAR_MAX : UINT := 50; (*Zeichenanzahl eines Schritt-Textes*)
+	nBRB_STEPLOG_STEPS_MAX : UINT := 20; (*Max. Index der Protokollierung*)
+END_VAR
+(*VarHandling*)
+VAR CONSTANT
+	nBRB_FILE_LINES_CHAR_MAX : UINT := 50000; (*Zeichenanzahl einer Datei-Zeile*)
+	nBRB_PVNAME_CHAR_MAX : UINT := 520; (*Zeichenanzahl eines Prozess-Variablen*)
+END_VAR
+(*FileHandling*)
+VAR CONSTANT
+	nBRB_DEVICE_NAME_CHAR_MAX : UDINT := 32; (*Zeichenanzahl eines Laufwerk-Namens*)
+	nBRB_FILE_NAME_CHAR_MAX : UDINT := 259; (*Zeichenanzahl eines Datei-Namens*)
+	nBRB_USB_DEVICE_LIST_INDEX_MAX : UINT := 5; (*Anzahl der Usb-Devices*)
+	nBRB_FILTER_ALL_CHAR_MAX : UDINT := 200; (*Zeichenanzahl einer gesamten Filterangabe*)
+	nBRB_FILTER_SINGLE_CHAR_MAX : UDINT := 20; (*Zeichenanzahl einer einzelnen Filterangabe*)
+	nBRB_FILTER_SINGLE_INDEX_MAX : UDINT := 10; (*Max. Index der Filterrangaben*)
+END_VAR
+(*TimeAndDate*)
+VAR CONSTANT
+	nBRB_TIME_TEXT_CHAR_MAX : USINT := 24; (*Zeichenanzahl eines Zeitstempels*)
+	nBRB_TIMERSWITCH_POINT_INDEX_MAX : UINT := 15; (*Maximaler Index der Zeitpunkt-Liste für die Zeitschaltuhr*)
+END_VAR
+(*Math*)
+VAR CONSTANT
+	rBRB_FACTOR_RAD_TO_DEG : REAL := 57.29578; (*Umrechnungsfaktor Bogenmass zu Grad*)
+	rBRB_FACTOR_DEG_TO_RAD : REAL := 0.01745329; (*Umrechnungsfaktor Grad zu Bogenmass*)
+END_VAR

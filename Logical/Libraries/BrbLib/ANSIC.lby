@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Library Version="5.00.0" SubType="ANSIC" Description="Helpful functions" xmlns="http://br-automation.co.at/AS/Library">
+  <Objects>
+    <Object Type="File">BrbLib - Dokumentation.pdf</Object>
+    <Object Type="File" Description="Exported functions and function blocks">BrbLib.fun</Object>
+    <Object Type="File" Description="Exported data types">BrbLib.typ</Object>
+    <Object Type="File" Description="Exported constants">BrbLib.var</Object>
+    <Object Type="File">AnsiCFunc.h</Object>
+    <Object Type="Package" Description="Schrittketten-Behandlung">StepHandling</Object>
+    <Object Type="Package" Description="Task-Kommunikation">TaskCommunication</Object>
+    <Object Type="Package" Description="Variablen-Funktionen">VarHandling</Object>
+    <Object Type="Package" Description="Datei-Funktionen">FileHandling</Object>
+    <Object Type="Package">Logger</Object>
+    <Object Type="Package" Description="Zeit- und Datums-Funktionen">TimeAndDate</Object>
+    <Object Type="Package" Description="String-Funktionen">Strings</Object>
+    <Object Type="Package" Description="Unicode-String-Funktionen">WcStrings</Object>
+    <Object Type="Package" Description="Xml-Funktionen">Xml</Object>
+    <Object Type="Package" Description="Speicherverwaltung">Memory</Object>
+    <Object Type="Package">Math</Object>
+    <Object Type="Package">Random</Object>
+    <Object Type="Package" Description="Erzeugung von Zufallszahlen">Additional</Object>
+  </Objects>
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+    <Dependency ObjectName="astime" />
+    <Dependency ObjectName="AsBrStr" />
+    <Dependency ObjectName="FileIO" />
+    <Dependency ObjectName="sys_lib" />
+    <Dependency ObjectName="DataObj" />
+    <Dependency ObjectName="AsUSB" />
+    <Dependency ObjectName="AsBrWStr" />
+    <Dependency ObjectName="ArEventLog" />
+  </Dependencies>
+</Library>

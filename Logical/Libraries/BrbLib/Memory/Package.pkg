@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File" Description="Löscht die gesamte Liste">BrbMemListClear.c</Object>
+    <Object Type="File" Description="Fügt einen Eintrag an bestimmter Stelle in der Liste ein">BrbMemListIn.c</Object>
+    <Object Type="File" Description="Holt einen bestimmten Eintrag und löscht ihn aus der Liste">BrbMemListOut.c</Object>
+    <Object Type="File" Description="Holt einen bestimmten Eintrag aus der Liste">BrbMemListGetEntry.c</Object>
+    <Object Type="File" Description="Fügt einen neuen Eintrag an der letzten Stelle hinzu">BrbFifoIn.c</Object>
+    <Object Type="File" Description="Gibt den Eintrag an erster Stelle zurück und löscht ihn aus der Liste">BrbFifoOut.c</Object>
+    <Object Type="File" Description="Fügt einen neuen Eintrag an der letzten Stelle hinzu">BrbLifoIn.c</Object>
+    <Object Type="File" Description="Gibt den Eintrag an letzter Stelle zurück und löscht ihn aus der Liste">BrbLifoOut.c</Object>
+    <Object Type="File" Description="Liest ein Bit aus einem Udint">BrbGetBitUdint.c</Object>
+    <Object Type="File" Description="Setzt ein Bit in einem Udint">BrbSetBitUdint.c</Object>
+    <Object Type="File" Description="Liest eine Bitmaske aus einem Udint">BrbGetBitmaskUdint.c</Object>
+    <Object Type="File" Description="Setzt oder löscht eine Bitmaske in einem Udint">BrbSetBitMaskUdint.c</Object>
+    <Object Type="File" Description="Liest ein Bit aus einem Uint">BrbGetBitUint.c</Object>
+    <Object Type="File" Description="Setzt ein Bit in einem Uint">BrbSetBitUint.c</Object>
+    <Object Type="File" Description="Liest eine Bitmaske aus einem Uint">BrbGetBitmaskUint.c</Object>
+    <Object Type="File" Description="Setzt oder löscht eine Bitmaske in einem Uint">BrbSetBitmaskUint.c</Object>
+    <Object Type="File" Description="Liest ein Bit aus einem Usint">BrbGetBitUsint.c</Object>
+    <Object Type="File" Description="Setzt ein Bit in einem Usint">BrbSetBitUsint.c</Object>
+    <Object Type="File" Description="Liest eine Bitmaske aus einem Usint">BrbGetBitmaskUsint.c</Object>
+    <Object Type="File" Description="Setzt oder löscht eine Bitmaske in einem Usint">BrbSetBitMaskUsint.c</Object>
+    <Object Type="File">BrbGetByteArrayBit.c</Object>
+    <Object Type="File">BrbSetByteArrayBit.c</Object>
+    <Object Type="File">BrbSetByteArrayBits.c</Object>
+  </Objects>
+</Package>

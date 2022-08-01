@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File" Description="manual 1 for the datalogic 6500bt">quickscan-6500bt_manual.pdf</Object>
+    <Object Type="File" Description="manual 2 for the datalogic 6500bt">datalogic-scanning-quickscan-qs6500-users-manual-425476.pdf</Object>
+  </Objects>
+</Package>

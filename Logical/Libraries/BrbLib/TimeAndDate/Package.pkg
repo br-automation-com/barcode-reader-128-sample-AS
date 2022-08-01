@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File">BrbSetDtStruct.c</Object>
+    <Object Type="File">BrbSetDt.c</Object>
+    <Object Type="File">BrbSetTimespan.c</Object>
+    <Object Type="File">BrbSetTimespanT.c</Object>
+    <Object Type="File" Description="Gibt die angegebene Zeit als Text zurück yyyy.MM.dd hh:mm:ss:mil">BrbGetTimeText.c</Object>
+    <Object Type="File" Description="Gibt die aktuelle Zeit als Text zurück: yyyy.MM.dd hh:mm:ss:mil">BrbGetCurrentTimeText.c</Object>
+    <Object Type="File" Description="Gibt die angegebene Zeit als Text zurück yyyy.MM.dd hh:mm:ss:mil">BrbGetTimeTextDtStruct.c</Object>
+    <Object Type="File" Description="Gibt die angegebene Zeit als Text zurück yyyy.MM.dd hh.mm.ss">BrbGetTimeTextDt.c</Object>
+    <Object Type="File" Description="Wandelt einen Zeit-Text in eine Zeit-Struktur um">BrbGetDtFromTimeText.c</Object>
+    <Object Type="File" Description="Wandelt eine RTC-Zeit in eine DtStruct-Zeit">BrbRtcTimeToDtStruct.c</Object>
+    <Object Type="File" Description="Vergleicht zwei DtStructures">BrbDtStructCompare.c</Object>
+    <Object Type="File" Description="Addiert zu einer DTStructure die angegebenen Sekunden">BrbDtStructAddDays.c</Object>
+    <Object Type="File" Description="Addiert zu einer DTStructure die angegebenen Sekunden">BrbDtStructAddHours.c</Object>
+    <Object Type="File" Description="Addiert zu einer DTStructure die angegebenen Sekunden">BrbDtStructAddMinutes.c</Object>
+    <Object Type="File" Description="Addiert zu einer DTStructure die angegebenen Sekunden">BrbDtStructAddSeconds.c</Object>
+    <Object Type="File" Description="Addiert zu einer DTStructure die angegebenen Millisekunden">BrbDtStructAddMilliseconds.c</Object>
+    <Object Type="File" Description="Addiert zu einer DTStructure die angegebenen Millisekunden">BrbDtStructAddMillisecondsLReal.c</Object>
+    <Object Type="File" Description="Gibt die angebenene Millisekunden-Zeit alsText zurück">BrbGetTimeTextMs.c</Object>
+    <Object Type="File" Description="Gibt die Zeit-Differenz zweier DtStruct-Zeiten in [ms] zurück">BrbGetTimeDiffMsDtStruct.c</Object>
+    <Object Type="File">BrbGetWeekdayDtStruct.c</Object>
+    <Object Type="File">BrbGetWeekdayDt.c</Object>
+    <Object Type="File" Description="Zeitschaltuhr für einen Kanal">BrbTimerSwitch.c</Object>
+  </Objects>
+</Package>

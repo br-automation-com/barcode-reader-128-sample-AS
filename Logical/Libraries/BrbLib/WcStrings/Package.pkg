@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File" Description="Kopiert einen STRING auf einen WSTRING">BrbWcCopyStringToWString.c</Object>
+    <Object Type="File" Description="Kopiert einen STRING auf einen WSTRING">BrbWcCopyWStringToString.c</Object>
+    <Object Type="File" Description="Gibt den ersten Index eines zu suchenden Textes zurück">BrbWcStringGetIndexOf.c</Object>
+    <Object Type="File" Description="Gibt den letzten Index eines zu suchenden Textes zurück">BrbWcStringGetLastIndexOf.c</Object>
+    <Object Type="File" Description="Gibt die erste Adresse eines zu suchenden Textes zurück">BrbWcStringGetAdrOf.c</Object>
+    <Object Type="File" Description="Gibt die letzte Adresse eines zu suchenden Textes zurück">BrbWcStringGetLastAdrOf.c</Object>
+    <Object Type="File" Description="Gibt zurück, ob ein Text mit einer bestimmten Zeichenfolge beginnt">BrbWcStringStartsWith.c</Object>
+    <Object Type="File" Description="Gibt zurück, ob ein Text mit einer bestimmten Zeichenfolge endet">BrbWcStringEndsWith.c</Object>
+    <Object Type="File" Description="Gibt eine Zeichenfolge innerhalb eines Textes zurück">BrbWcStringGetSubText.c</Object>
+    <Object Type="File" Description="Gibt eine Zeichenfolge innerhalb eines Textes zurück">BrbWcStringGetSubTextByLen.c</Object>
+    <Object Type="File" Description="Gibt eine Zeichenfolge innerhalb eines Textes zurück">BrbWcStringGetSubTextByAdr.c</Object>
+    <Object Type="File" Description="Hängt eine Zeichenfolge an einen Text (Ersatz für brwcscat)">BrbWcStringAppend.c</Object>
+    <Object Type="File" Description="Schneidet eine Zeichenfolge aus einem Text heraus">BrbWcStringCut.c</Object>
+    <Object Type="File" Description="Fügt eine Zeichenfolge in einen Text ein">BrbWcStringInsert.c</Object>
+    <Object Type="File" Description="Ersetzt eine Zeichenfolge in einem Text durch eine andere">BrbWcStringReplace.c</Object>
+    <Object Type="File" Description="Füllt einen String auf der linken Seite mit einem Füllzeichen auf eine bestimme Länge">BrbWcStringPadLeft.c</Object>
+    <Object Type="File" Description="Füllt einen String auf der rechten Seite mit einem Füllzeichen auf eine bestimme Länge">BrbWcStringPadRight.c</Object>
+    <Object Type="File" Description="Schneidet eine Zeichenfolge auf der linken Seite eines Textes heraus">BrbWcStringTrimLeft.c</Object>
+    <Object Type="File" Description="Schneidet eine Zeichenfolge auf der rechten Seite eines Textes heraus">BrbWcStringTrimRight.c</Object>
+    <Object Type="File" Description="Konvertiert einen String zu Großbuchstaben">BrbWcStringToUpper.c</Object>
+    <Object Type="File" Description="Konvertiert einen WcString zu Kleinbuchstaben">BrbWcStringToLower.c</Object>
+    <Object Type="File" Description="Gibt zurück, ob ein Text eine Nummer enthält">BrbWcStringIsNumerical.c</Object>
+    <Object Type="File" Description="Gibt zurück, ob ein Text eine hexadezimale Nummer enthält">BrbWcStringIsHex.c</Object>
+    <Object Type="File" Description="Zählt das Vorkommen einer Zeichenfolge innerhalb eines Texts">BrbWcStringCountText.c</Object>
+    <Object Type="File">BrbWcStringRepeat.c</Object>
+  </Objects>
+</Package>

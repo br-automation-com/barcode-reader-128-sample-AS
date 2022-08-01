@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File" Description="Versucht, die Reservierung für ein Task-Kommando zu erhalten">BrbSetCaller.c</Object>
+    <Object Type="File" Description="Setzt eine DirectBox komplett auf 0">BrbClearDirectBox.c</Object>
+    <Object Type="File" Description="Setzt eine CallerBox komplett auf 0">BrbClearCallerBox.c</Object>
+  </Objects>
+</Package>

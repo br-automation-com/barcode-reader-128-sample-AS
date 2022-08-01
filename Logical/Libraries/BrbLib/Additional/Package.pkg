@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File" Description="Prüft eine Ip-Adresse und berichtigt sie gegebenenfalls">BrbCheckIpAddress.c</Object>
+    <Object Type="File" Description="Entprellt einen Eingang">BrbDebounceInput.c</Object>
+    <Object Type="File" Description="Gibt den Offset eines Struktur-Members zurück">BrbGetStructMemberOffset.c</Object>
+    <Object Type="File">BrbGetCompilerVersion.c</Object>
+  </Objects>
+</Package>

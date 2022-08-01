@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File" Description="Erzeugt eine Zufallszahl zwischen 0.0 und 1.0">BrbGetRandomPercent.c</Object>
+    <Object Type="File" Description="Erzeugt einen boolschen Zufallswert">BrbGetRandomBool.c</Object>
+    <Object Type="File" Description="Erzeugt eine Zufallszahl zwischen nMin und nMax">BrbGetRandomUdint.c</Object>
+    <Object Type="File" Description="Erzeugt eine Zufallszahl zwischen nMin und nMax">BrbGetRandomDint.c</Object>
+    <Object Type="File" Description="Erzeugt einen Zufallstext mit bestimmter Länge (nur Zahlen, Groß- und Kleinbuchstaben)">BrbGetRandomText.c</Object>
+    <Object Type="File">BrbGetRandomString.c</Object>
+    <Object Type="File" Description="Erzeugt einen Zufallstext mit bestimmter Länge aus einer Zeichenauswahl">BrbGetRandomStringExt.c</Object>
+  </Objects>
+</Package>

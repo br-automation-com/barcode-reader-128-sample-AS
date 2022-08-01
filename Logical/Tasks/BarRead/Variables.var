@@ -1,0 +1,11 @@
+(**** USB Barcode Data and management*)
+VAR
+	ReadData : ARRAY[0..HID_ARR_LEN] OF USINT;
+	ResultData : ARRAY[0..HID_ARR_LEN] OF USINT;
+	UsbManager : UsbReader_Type;
+END_VAR
+(**** transformation HID to Ascii*)
+VAR
+	AsciiHidTableStandard : AsciiHidTable_Type;
+	AsciiHidInternal : AsciiHidInternal_Type;
+END_VAR

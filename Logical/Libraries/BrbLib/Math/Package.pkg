@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File">BrbAbsReal.c</Object>
+    <Object Type="File">BrbAbsLReal.c</Object>
+    <Object Type="File">BrbIsNearlyZeroReal.c</Object>
+    <Object Type="File">BrbIsNearlyZeroLReal.c</Object>
+    <Object Type="File">BrbIsWithinRangeDint.c</Object>
+    <Object Type="File">BrbIsWithinRangeUdint.c</Object>
+    <Object Type="File">BrbIsWithinRangeReal.c</Object>
+    <Object Type="File">BrbIsWithinRangeLReal.c</Object>
+    <Object Type="File" Description="Rechnet einen Winkel von Grad ins Bogenmass um">BrbGetAngleRad.c</Object>
+    <Object Type="File" Description="Rechnet einen Winkel vom Bogenmass in Grad um">BrbGetAngleDeg.c</Object>
+    <Object Type="File" Description="Normalisiert einen Bogenmasswinkel in den Bereich 0..2Pi">BrbNormalizeAngleRad.c</Object>
+    <Object Type="File" Description="Normalisiert einen Grad-Winkel in den Bereich 0..360°">BrbNormalizeAngleDeg.c</Object>
+    <Object Type="File">BrbGetDistance2d.c</Object>
+    <Object Type="File" Description="Rundet einen Dint">BrbRoundDint.c</Object>
+    <Object Type="File" Description="Skaliert ein analoges Eingangssignal linear auf einen Einheitswert">BrbScaleAnalogInput.c</Object>
+    <Object Type="File" Description="Skaliert ein analoges Ausgangssignal von einem EInheitswert">BrbScaleAnalogOutput.c</Object>
+  </Objects>
+</Package>

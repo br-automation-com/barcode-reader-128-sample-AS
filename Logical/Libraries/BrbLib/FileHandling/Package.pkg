@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File" Description="Prüft, ob ein Usb-Medium gesteckt wurde und linkt es">BrbCheckUsbSticks.c</Object>
+    <Object Type="File" Description="Gibt eine Liste der Dateien eines Laufwerks zurück">BrbReadDir.c</Object>
+    <Object Type="File" Description="Löscht Dateien, die älter als das angegebene Datum sind">BrbDeleteFiles.c</Object>
+    <Object Type="File" Description="Lädt eine Datei in ein Datenobjekt">BrbLoadFileDataObj.c</Object>
+    <Object Type="File" Description="Speichert ein Datenobjekt in eine Datei">BrbSaveFileDataObj.c</Object>
+    <Object Type="File">BrbLoadFileBin.c</Object>
+    <Object Type="File" Description="Ersetzt Sonderzeichen in einem Dateinamen mit Unterstrichen">BrbCheckFileName.c</Object>
+    <Object Type="File" Description="Prüft die Endung eines Dateinamens und hängt sie gegebenenfalls an">BrbCheckFileEnding.c</Object>
+    <Object Type="File" Description="Fügt zwei Pfade oder eine Pfad und eine Datei zusammen">BrbCombinePath.c</Object>
+  </Objects>
+</Package>

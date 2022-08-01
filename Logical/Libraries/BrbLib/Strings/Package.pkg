@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File" Description="Wandelt einen Udint in einen Hex-String">BrbUsintToHex.c</Object>
+    <Object Type="File">BrbUsintArrayToHex.c</Object>
+    <Object Type="File">BrbHexToUsintArray.c</Object>
+    <Object Type="File" Description="Wandelt einen UDINT-Wert zu einem String">BrbUdintToAscii.c</Object>
+    <Object Type="File" Description="Wandelt einen String zu einem UDINT-Wert">BrbAsciiToUdint.c</Object>
+    <Object Type="File" Description="Wandelt einen Udint in einen Hex-String">BrbUdintToHex.c</Object>
+    <Object Type="File" Description="Wandelt einen Hex-String in einen Udint">BrbHexToUdint.c</Object>
+    <Object Type="File">BrbUdintToBin.c</Object>
+    <Object Type="File" Description="Wandelt eine DINT in einen Hex-String">BrbDintToHex.c</Object>
+    <Object Type="File" Description="Wandelt einen Hex-String in einen Dint">BrbHexToDint.c</Object>
+    <Object Type="File" Description="Wandelt ein Ascii-Feld in einen lesbaren String">BrbAsciiFieldToString.c</Object>
+    <Object Type="File">BrbStringGetIndexOf.c</Object>
+    <Object Type="File">BrbStringGetLastIndexOf.c</Object>
+    <Object Type="File" Description="Gibt die Adresse eines zu suchenden Textes zurück">BrbStringGetAdrOf.c</Object>
+    <Object Type="File" Description="Gibt die letzte Adresse eines zu suchenden Textes zurück">BrbStringGetLastAdrOf.c</Object>
+    <Object Type="File" Description="Gibt zurück, ob ein Text mit einer bestimmten Zeichenfolge beginnt">BrbStringStartsWith.c</Object>
+    <Object Type="File" Description="Gibt zurück, ob ein Text mit einer bestimmten Zeichenfolge endet">BrbStringEndsWith.c</Object>
+    <Object Type="File" Description="Gibt eine Zeichenfolge innerhalb eines Textes zurück">BrbStringGetSubText.c</Object>
+    <Object Type="File" Description="Gibt eine Zeichenfolge innerhalb eines Textes zurück">BrbStringGetSubTextByLen.c</Object>
+    <Object Type="File" Description="Gibt eine Zeichenfolge innerhalb eines Textes zurück">BrbStringGetSubTextByAdr.c</Object>
+    <Object Type="File" Description="Hängt eine Zeichenfolge an einen Text (Ersatz für strcat)">BrbStringAppend.c</Object>
+    <Object Type="File" Description="Schneidet eine Zeichenfolge aus einem Text heraus">BrbStringCut.c</Object>
+    <Object Type="File" Description="Schneidet die Zeichenfolge ab dem letzten Trennzeichen in einem Text ab">BrbStringCutFromLastSeparator.c</Object>
+    <Object Type="File" Description="Fügt eine Zeichenfolge in einen Text ein">BrbStringInsert.c</Object>
+    <Object Type="File" Description="Ersetzt eine Zeichenfolge in einem Text durch eine andere">BrbStringReplace.c</Object>
+    <Object Type="File" Description="Füllt einen String auf der linken Seite mit einem Füllzeichen auf eine bestimme Länge">BrbStringPadLeft.c</Object>
+    <Object Type="File" Description="Füllt einen String auf der rechten Seite mit einem Füllzeichen auf eine bestimme Länge">BrbStringPadRight.c</Object>
+    <Object Type="File" Description="Schneidet eine Zeichenfolge auf der linken Seite eines Textes heraus">BrbStringTrimLeft.c</Object>
+    <Object Type="File" Description="Schneidet eine Zeichenfolge auf der rechten Seite eines Textes heraus">BrbStringTrimRight.c</Object>
+    <Object Type="File" Description="Spaltet einen Text in mehrere String aufgrund eines Trennzeichens">BrbStringSplit.c</Object>
+    <Object Type="File">BrbStringSplitEmpty.c</Object>
+    <Object Type="File" Description="Konvertiert eine exponentielle Notation in einen Real-Wert">BrbStringConvertRealFromExp.c</Object>
+    <Object Type="File" Description="Konvertiert einen Real-Wert in eine exponentielle Notation">BrbStringConvertRealToExp.c</Object>
+    <Object Type="File" Description="Formatiert einen String-Wert auf Nachkommastellen">BrbStringFormatFractionDigits.c</Object>
+    <Object Type="File" Description="Dreht die Reihenfolge der Zeichen in einem Text">BrbStringSwap.c</Object>
+    <Object Type="File" Description="Konvertiert einen String zu Großbuchstaben">BrbStringToUpper.c</Object>
+    <Object Type="File" Description="Konvertiert einen String zu Kleinbuchstaben">BrbStringToLower.c</Object>
+    <Object Type="File" Description="Gibt zurück, ob ein Text eine Nummer enthält">BrbStringIsNumerical.c</Object>
+    <Object Type="File" Description="Gibt zurück, ob ein Text eine hexadezimale Nummer enthält">BrbStringIsHex.c</Object>
+    <Object Type="File" Description="Zählt das Vorkommen einer Zeichenfolge innerhalb eines Texts">BrbStringCountText.c</Object>
+    <Object Type="File">BrbStringRepeat.c</Object>
+  </Objects>
+</Package>
