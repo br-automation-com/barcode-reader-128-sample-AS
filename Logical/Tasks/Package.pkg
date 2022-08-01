@@ -2,6 +2,6 @@
 <?AutomationStudio FileVersion="4.9"?>
 <Package xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
-    <Object Type="Program" Language="ANSIC" Description="Code 128 sample">BarRead</Object>
+    <Object Type="Program" Language="ANSIC" Description="Code 128 sample">BarCodeReader</Object>
   </Objects>
 </Package>

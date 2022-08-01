@@ -5,7 +5,7 @@
   <TaskClass Name="Cyclic#2" />
   <TaskClass Name="Cyclic#3" />
   <TaskClass Name="Cyclic#4">
-    <Task Name="BarRead" Source="Tasks.BarRead.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
+    <Task Name="BarCodeRea" Source="Tasks.BarCodeReader.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
   </TaskClass>
   <Libraries>
     <LibraryObject Name="AsUSB" Source="Libraries.AsUSB.lby" Memory="UserROM" Language="binary" Debugging="true" />
