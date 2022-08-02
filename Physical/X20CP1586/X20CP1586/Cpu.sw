@@ -4,12 +4,14 @@
   <TaskClass Name="Cyclic#1" />
   <TaskClass Name="Cyclic#2" />
   <TaskClass Name="Cyclic#3" />
-  <TaskClass Name="Cyclic#4" />
+  <TaskClass Name="Cyclic#4">
+    <Task Name="BarCodeST" Source="Tasks.ST.BarCodeST.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+  </TaskClass>
   <TaskClass Name="Cyclic#5" />
   <TaskClass Name="Cyclic#6" />
   <TaskClass Name="Cyclic#7" />
   <TaskClass Name="Cyclic#8">
-    <Task Name="BarCodeRea" Source="Tasks.BarCodeReader.prg" Memory="UserROM" Description="Barcode Reader: Code 128 sample" Language="ANSIC" Debugging="true" />
+    <Task Name="BarCodeC" Source="Tasks.AnsiC.BarCodeC.prg" Memory="UserROM" Description="Barcode Reader: Code 128 sample" Language="ANSIC" Debugging="true" />
   </TaskClass>
   <Binaries>
     <BinaryObject Name="FWRules" Source="" Memory="UserROM" Language="Binary" />
