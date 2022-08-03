@@ -9,7 +9,7 @@
   <TaskClass Name="Cyclic#6" />
   <TaskClass Name="Cyclic#7" />
   <TaskClass Name="Cyclic#8">
-    <Task Name="BarCodeST" Source="Tasks.ST.BarCodeST.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="BarCodeST" Source="Tasks.StructuredText.BarCodeST.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="BarCodeC" Source="Tasks.AnsiC.BarCodeC.prg" Memory="UserROM" Description="Barcode Reader: Code 128 sample" Language="ANSIC" Debugging="true" />
   </TaskClass>
   <Binaries>

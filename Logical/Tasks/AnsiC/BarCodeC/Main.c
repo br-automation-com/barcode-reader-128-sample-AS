@@ -341,7 +341,7 @@ void _CYCLIC ProgramCyclic(void)
         break;
       }
     
-    // error step: at the moment 
+    // error step: at the moment just a placeholder
     case USB_STEPS_ERR:
       {
         brsstrcpy((UDINT) &UsbManager.Steps.Step.Text, (UDINT) "USB_STEPS_ERR");
