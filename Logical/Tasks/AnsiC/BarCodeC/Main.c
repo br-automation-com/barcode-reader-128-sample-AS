@@ -50,6 +50,9 @@ void _INIT ProgramInit(void)
   UsbManager.Fubs.FRM_xopen_Fub.mode = 0;
   UsbManager.Fubs.FRM_xopen_Fub.config = 0;
   
+  // timer
+  UsbManager.Fubs.TON_WaitForInput.PT = WAIT_FOR_DATA;
+  
   // init some HID Table
   SetHIDStandardTable((AsciiHidTable_Type*) &AsciiHidTableStandard);
   
@@ -190,6 +193,8 @@ void _CYCLIC ProgramCyclic(void)
       }
     
     // read data stream from usb device:
+    // some barcode reader send data during connection (bt6500 sends 4 bytes)
+    // => this array must be cleared (UsbManager.ReadIdx = 0; clear ReadData) or the first scan isn't correct
     case USB_STEPS_READ:
       {
         brsstrcpy((UDINT) &UsbManager.Steps.Step.Text, (UDINT) "USB_STEPS_READ");
@@ -204,6 +209,8 @@ void _CYCLIC ProgramCyclic(void)
           if (UsbManager.Fubs.FRM_read_Fub.status == ERR_OK)
           {
             UsbManager.Statistic.FrmRead++;
+            UsbManager.Fubs.TON_WaitForInput.IN = TRUE; // start timeout for data traffic
+            
             if (UsbManager.ReadIdx < sizeof(ReadData))
             {
               // copy new data to the receive buffer
@@ -236,6 +243,19 @@ void _CYCLIC ProgramCyclic(void)
           {
             UsbManager.Statistic.FrmReadNoData = UsbManager.Statistic.FrmReadNoData + 1; // statistic
           }
+        }
+        
+        // check timeout
+        TON(&UsbManager.Fubs.TON_WaitForInput);
+        if (UsbManager.Fubs.TON_WaitForInput.Q == TRUE)
+        {
+          // timeout: no data => Clear the existing data
+          UsbManager.Fubs.TON_WaitForInput.IN = FALSE;
+          TON(&UsbManager.Fubs.TON_WaitForInput);
+          
+          UsbManager.ReadIdx = 0;
+          brsmemset((UDINT) &ReadData, 0, sizeof(ReadData));
+          UsbManager.Statistic.FrmReadReset++;
         }
         
         break;
@@ -289,6 +309,8 @@ void _CYCLIC ProgramCyclic(void)
         brsmemset((UDINT) &ReadData, 0, sizeof(ReadData));
         
         //internal reset
+        UsbManager.Fubs.TON_WaitForInput.IN = FALSE;
+        TON(&UsbManager.Fubs.TON_WaitForInput);
         UsbManager.DeviceData.WaitTranslate = 0;
         UsbManager.ReadIdx = 0;
           
@@ -304,10 +326,12 @@ void _CYCLIC ProgramCyclic(void)
         
         // copy result - just for the watch window:
         brsmemset((UDINT) &ResultData, 0, sizeof(ResultData));
-        brsmemcpy((UDINT) &ResultData, (UDINT) &AsciiHidInternal.Result, sizeof(ResultData));
-        brsmemset((UDINT) &ReadData, 0, sizeof(ReadData));
+        brsmemcpy((UDINT) &ResultData, (UDINT) &AsciiHidInternal.Result, sizeof(AsciiHidInternal.Result));
+        //brsmemset((UDINT) &ReadData, 0, sizeof(ReadData));
         
         //internal reset
+        UsbManager.Fubs.TON_WaitForInput.IN = FALSE;
+        TON(&UsbManager.Fubs.TON_WaitForInput);
         UsbManager.DeviceData.WaitTranslate = 0;
         UsbManager.ReadIdx = 0;
           
@@ -586,7 +610,7 @@ UINT GetAsciiCodeFromTable(AsciiHidTable_Type* pTable, USINT CheckForCode, ASCII
 {
   USINT i;
   
-  for (i=0; i<HID_ARR_LEN; i++)
+  for (i=0; i<HID_ARR_TABLE_LEN; i++)
   {
     if (pTable->Codes[i].HidCode != 0)
     {

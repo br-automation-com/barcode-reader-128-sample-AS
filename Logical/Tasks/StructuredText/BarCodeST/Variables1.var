@@ -1,5 +1,5 @@
 VAR
-	EndFor : UINT;
+	EndFor : USINT;
 	i : USINT;
 	j : USINT;
 	pWorkData : REFERENCE TO USINT;

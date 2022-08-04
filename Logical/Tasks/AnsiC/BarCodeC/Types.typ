@@ -24,6 +24,7 @@ TYPE
 		FrmClose : USINT; (*usb device geschlossen*)
 		TranslateOk : USINT; (*translate hid to ascii*)
 		TranslateNok : USINT; (*translate hid to ascii; no data?*)
+		FrmReadReset : USINT;
 	END_STRUCT;
 	UsbError_Type : 	STRUCT 
 		Status : UINT; (*error number*)
@@ -57,6 +58,7 @@ TYPE
 		FRM_close_Fub : FRM_close; (*close interface*)
 		UsbNodeGet_Fub : UsbNodeGet; (*get information from usb device*)
 		UsbNodeListGet_Fub : UsbNodeListGet; (*get list of available devices*)
+		TON_WaitForInput : TON; (*wait for more data*)
 	END_STRUCT;
 	UsbBarCodeStep_Type : 	STRUCT  (*brb step handling TemplateStep_typ*)
 		Text : STRING[nBRB_STEP_TEXT_CHAR_MAX];
@@ -74,7 +76,7 @@ TYPE
 	END_STRUCT;
 	AsciiHidTable_Type : 	STRUCT 
 		Sign : STRING[20]; (*some name for table*)
-		Codes : ARRAY[0..39]OF AsciiHid_Type; (*Codes*)
+		Codes : ARRAY[0..HID_ARR_TABLE_LEN]OF AsciiHid_Type; (*Codes*)
 	END_STRUCT;
 	ASCII_HID_STATE_enum : 
 		(

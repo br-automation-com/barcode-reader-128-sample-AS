@@ -173,7 +173,7 @@ ACTION ParseScannerCode_ACTION:
   
   // clear last data
   brsmemset(ADR(AsciiHidInternal.Result), 0, SIZEOF(AsciiHidInternal.Result));
-  EndFor := UsbManager.ReadIdx -1;
+  EndFor := UINT_TO_USINT(UsbManager.ReadIdx) -1;
   
   FOR AsciiHidInternal.i := 0 TO EndFor DO
     pWorkData ACCESS (ADR(ReadData) + AsciiHidInternal.i);
@@ -214,10 +214,10 @@ ACTION ParseScannerCode_ACTION:
         END_IF  
       END_IF
       
-      IF (j >= HID_ARR_LEN) OR (ValuesFound = TRUE)  THEN
+      IF (j >= HID_ARR_TABLE_LEN) OR (ValuesFound = TRUE)  THEN
         ExitRepeat := TRUE;
       END_IF 
-    
+      j := j +1;
     UNTIL
       ExitRepeat = TRUE
     END_REPEAT;

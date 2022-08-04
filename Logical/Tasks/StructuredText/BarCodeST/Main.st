@@ -31,6 +31,9 @@ PROGRAM _INIT
   UsbManager.Fubs.FRM_xopen_Fub.mode := 0;
   UsbManager.Fubs.FRM_xopen_Fub.config := 0;
   
+  // timer
+  UsbManager.Fubs.TON_WaitForInput.PT := WAIT_FOR_DATA;
+  
   // init some HID Table
   SetHIDStandardTable_Action;
   
@@ -93,18 +96,18 @@ PROGRAM _CYCLIC
   
     // init step management
     USB_STEPS_INIT:
-      brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR("USB_STEPS_INIT"));
+      brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR('USB_STEPS_INIT'));
       UsbManager.Steps.Step.InitDone := TRUE;
       UsbManager.Steps.Step.Nr := USB_STEPS_WAIT;
     
     // wait for commando from usb device detection; just an idle step..
     USB_STEPS_WAIT:
-      brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR("USB_STEPS_WAIT"));
+      brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR('USB_STEPS_WAIT'));
       
     // search for device
     USB_STEPS_SEARCHDEVICE:     
     
-      brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR("USB_STEPS_SEARCHDEVICE"));
+      brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR('USB_STEPS_SEARCHDEVICE'));
         
       UsbManager.Fubs.UsbNodeGet_Fub.nodeId := UsbManager.UsbNodeList[UsbManager.NodeIdx];
       UsbManager.Fubs.UsbNodeGet_Fub();
@@ -129,7 +132,7 @@ PROGRAM _CYCLIC
       
       // initialize found usb Device
       USB_STEPS_DEVICEOPEN:
-        brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR( "USB_STEPS_DEVICEOPEN"));
+        brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR('USB_STEPS_DEVICEOPEN'));
       
         UsbManager.Fubs.FRM_xopen_Fub.device := ADR(UsbManager.DeviceData.StringDevice);
         UsbManager.Fubs.FRM_xopen_Fub();
@@ -154,7 +157,7 @@ PROGRAM _CYCLIC
         
     // read data stream from usb device:
     USB_STEPS_READ:
-      brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR("USB_STEPS_READ"));
+      brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR('USB_STEPS_READ'));
         
       UsbManager.Fubs.FRM_read_Fub.enable := TRUE;
       UsbManager.Fubs.FRM_read_Fub.ident := UsbManager.DeviceData.FrameIdent;
@@ -166,6 +169,8 @@ PROGRAM _CYCLIC
         IF UsbManager.Fubs.FRM_read_Fub.status = ERR_OK THEN
           
           UsbManager.Statistic.FrmRead := UsbManager.Statistic.FrmRead + 1;
+          UsbManager.Fubs.TON_WaitForInput.IN := TRUE; // start timeout for data traffic
+          
           IF UsbManager.ReadIdx < SIZEOF(ReadData) THEN
             
             // copy new data to the receive buffer
@@ -179,29 +184,41 @@ PROGRAM _CYCLIC
             END_IF
           END_IF // IF UsbManager.ReadIdx < SIZEOF(ReadData) THEN
    
-            // after reading the data: release reading buffer
-            UsbManager.Fubs.FRM_rbuf_Fub.enable := TRUE;
-            UsbManager.Fubs.FRM_rbuf_Fub.ident := UsbManager.DeviceData.FrameIdent;
-            UsbManager.Fubs.FRM_rbuf_Fub.buffer := UsbManager.Fubs.FRM_read_Fub.buffer;
-              
-            UsbManager.Fubs.FRM_rbuf_Fub();
-            IF UsbManager.Fubs.FRM_rbuf_Fub.status <> ERR_OK THEN
-              
-              UsbManager.Err.ErrStep := USB_STEPS_READ;
-              UsbManager.Err.Status := UsbManager.Fubs.FRM_rbuf_Fub.status;
-                
-              UsbManager.Steps.Step.Nr := USB_STEPS_ERR;
+          // after reading the data: release reading buffer
+          UsbManager.Fubs.FRM_rbuf_Fub.enable := TRUE;
+          UsbManager.Fubs.FRM_rbuf_Fub.ident := UsbManager.DeviceData.FrameIdent;
+          UsbManager.Fubs.FRM_rbuf_Fub.buffer := UsbManager.Fubs.FRM_read_Fub.buffer;
             
-            ELSIF (UsbManager.Fubs.FRM_read_Fub.status = frmERR_NOINPUT) THEN
+          UsbManager.Fubs.FRM_rbuf_Fub();
+          IF UsbManager.Fubs.FRM_rbuf_Fub.status <> ERR_OK THEN
             
-              UsbManager.Statistic.FrmReadNoData := UsbManager.Statistic.FrmReadNoData + 1; // statistic
-            END_IF //IF UsbManager.Fubs.FRM_rbuf_Fub.status <> ERR_OK THEN
-          END_IF // IF UsbManager.Fubs.FRM_read_Fub.status = ERR_OK THEN
-       END_IF // IF UsbManager.Fubs.FRM_read_Fub.status <> ERR_FUB_BUSY THEN
+            UsbManager.Err.ErrStep := USB_STEPS_READ;
+            UsbManager.Err.Status := UsbManager.Fubs.FRM_rbuf_Fub.status;
+              
+            UsbManager.Steps.Step.Nr := USB_STEPS_ERR;
+          
+          ELSIF (UsbManager.Fubs.FRM_read_Fub.status = frmERR_NOINPUT) THEN
+          
+            UsbManager.Statistic.FrmReadNoData := UsbManager.Statistic.FrmReadNoData + 1; // statistic
+          END_IF //IF UsbManager.Fubs.FRM_rbuf_Fub.status <> ERR_OK THEN
+        END_IF // IF UsbManager.Fubs.FRM_read_Fub.status = ERR_OK THEN
+     END_IF // IF UsbManager.Fubs.FRM_read_Fub.status <> ERR_FUB_BUSY THEN
+     
+     // check timeout
+     UsbManager.Fubs.TON_WaitForInput();
+     IF UsbManager.Fubs.TON_WaitForInput.Q = TRUE THEN
+        // timeout: no data => Clear the existing data
+        UsbManager.Fubs.TON_WaitForInput.IN := FALSE; 
+        UsbManager.Fubs.TON_WaitForInput();
         
-    
+        UsbManager.ReadIdx := 0;
+        brsmemset(ADR(ReadData), 0, SIZEOF(ReadData));
+        UsbManager.Statistic.FrmReadReset := UsbManager.Statistic.FrmReadReset + 1; 
+      END_IF
+      
+        
    USB_STEPS_WAIT_TD: 
-      brsstrcpy( ADR(UsbManager.Steps.Step.Text), ADR( "USB_STEPS_WAIT_TD"));
+      brsstrcpy( ADR(UsbManager.Steps.Step.Text), ADR('USB_STEPS_WAIT_TD'));
         
       UsbManager.DeviceData.WaitTranslate := UsbManager.DeviceData.WaitTranslate + 1;
       IF UsbManager.DeviceData.WaitTranslate > 10 THEN
@@ -211,7 +228,7 @@ PROGRAM _CYCLIC
     
     
       USB_STEPS_TRANSLATE_DATA:
-        brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR("USB_STEPS_TRANSLATE_DATA"));
+        brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR('USB_STEPS_TRANSLATE_DATA'));
         
         // parse the raw data from the barcode scanner:
         // translate the hid codes to the ascii codes
@@ -236,7 +253,7 @@ PROGRAM _CYCLIC
     
       // clear some data (arrays, index,...)
       USB_STEPS_RESET_DATA:
-        brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR("USB_STEPS_RESET_DATA"));
+        brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR('USB_STEPS_RESET_DATA'));
         
         // reset some result vars - just for the watch window:
         brsmemset(ADR(ResultData), 0, SIZEOF(ResultData));
@@ -251,11 +268,11 @@ PROGRAM _CYCLIC
       
       // copy the translated data to some output variable
       USB_STEPS_COPY_DATA:
-        brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR("USB_STEPS_COPY_DATA"));
+        brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR('USB_STEPS_COPY_DATA'));
         
         // copy result - just for the watch window:
         brsmemset(ADR(ResultData), 0, SIZEOF(ResultData));
-        brsmemcpy(ADR(ResultData), ADR(AsciiHidInternal.Result), SIZEOF(ResultData));
+        brsmemcpy(ADR(ResultData), ADR(AsciiHidInternal.Result), SIZEOF(AsciiHidInternal.Result));
         brsmemset(ADR(ReadData), 0, SIZEOF(ReadData));
         
         //internal reset
@@ -267,7 +284,7 @@ PROGRAM _CYCLIC
     
       // close the open dvframe connection 
       USB_STEPS_SHUTDOWN:
-        brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR("USB_STEPS_SHUTDOWN"));
+        brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR('USB_STEPS_SHUTDOWN'));
         
         UsbManager.Fubs.FRM_close_Fub.enable := TRUE;
         UsbManager.Fubs.FRM_close_Fub.ident := UsbManager.DeviceData.FrameIdent;
@@ -289,7 +306,7 @@ PROGRAM _CYCLIC
       // error step: at the moment just a placeholder
       USB_STEPS_ERR:
         
-        brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR("USB_STEPS_ERR"));
+        brsstrcpy(ADR(UsbManager.Steps.Step.Text), ADR('USB_STEPS_ERR'));
         
         // back to start
         UsbManager.Steps.Step.Nr := USB_STEPS_WAIT;
