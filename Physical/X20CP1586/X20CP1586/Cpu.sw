@@ -10,7 +10,7 @@
   <TaskClass Name="Cyclic#7" />
   <TaskClass Name="Cyclic#8">
     <Task Name="BarCodeST" Source="Tasks.StructuredText.BarCodeST.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="BarCodeC" Source="Tasks.AnsiC.BarCodeC.prg" Memory="UserROM" Description="Barcode Reader: Code 128 sample" Language="ANSIC" Debugging="true" Disabled="true" />
+    <Task Name="BarCodeC" Source="Tasks.AnsiC.BarCodeC.prg" Memory="UserROM" Language="ANSIC" Debugging="true" Disabled="true" />
   </TaskClass>
   <Binaries>
     <BinaryObject Name="FWRules" Source="" Memory="UserROM" Language="Binary" />
