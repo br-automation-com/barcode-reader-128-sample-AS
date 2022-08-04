@@ -1,6 +1,5 @@
 VAR
 	EndFor : USINT;
-	i : USINT;
 	j : USINT;
 	pWorkData : REFERENCE TO USINT;
 	ValuesFound : BOOL;

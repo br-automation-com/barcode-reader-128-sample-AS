@@ -173,6 +173,7 @@ ACTION ParseScannerCode_ACTION:
   
   // clear last data
   brsmemset(ADR(AsciiHidInternal.Result), 0, SIZEOF(AsciiHidInternal.Result));
+  
   EndFor := UINT_TO_USINT(UsbManager.ReadIdx) -1;
   
   FOR AsciiHidInternal.i := 0 TO EndFor DO
@@ -188,10 +189,11 @@ ACTION ParseScannerCode_ACTION:
     END_IF
   END_FOR  
   
-  // result to the output
+  // clear result string
   brsmemset(ADR(AsciiHidInternal.Result), 0, SIZEOF(AsciiHidInternal.Result));
 
   // - - - get characters 
+  AsciiHidInternal.AsciiCnt := 0;
   FOR AsciiHidInternal.i := 0 TO EndFor DO
     pWorkData ACCESS (ADR(ReadData) + AsciiHidInternal.i);
     
@@ -228,6 +230,7 @@ ACTION ParseScannerCode_ACTION:
     END_IF
     
  END_FOR
-    UsbManager.Status.ParseResult := AsciiHidInternal.AsciiCnt;
+ 
+ UsbManager.Status.ParseResult := AsciiHidInternal.AsciiCnt;
     
 END_ACTION

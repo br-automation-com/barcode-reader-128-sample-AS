@@ -587,7 +587,7 @@ UINT ParseScannerCode(AsciiHidTable_Type* pTable, USINT* pStartData, USINT DataL
     }
   }
   
-  // result to the output
+  // clear result string
   brsmemset((UDINT) &pHidInternal->Result, 0, sizeof(pHidInternal->Result));
   
   // - - - get characters 
